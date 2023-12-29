@@ -1,8 +1,14 @@
+using Ecommerce_shop.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddDbContext<Hshop2023Context>(opt =>
+{
+    opt.UseSqlServer(builder.Configuration.GetConnectionString("Hshop2023"));
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
